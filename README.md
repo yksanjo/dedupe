@@ -2,6 +2,9 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/yksanjo/dedupe/actions/workflows/ci.yml/badge.svg)](https://github.com/yksanjo/dedupe/actions)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)]()
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A high-performance file deduplication tool with incremental scanning — like mini rsync for finding and cleaning duplicate files.
 
@@ -32,19 +35,35 @@ A high-performance file deduplication tool with incremental scanning — like mi
 
 ## 📋 Installation
 
+### Quick Install
+
 ```bash
-# Clone the repository
+# Download and install
+curl -fsSL https://raw.githubusercontent.com/yksanjo/dedupe/main/install.sh | bash
+
+# Or manually
 git clone https://github.com/yksanjo/dedupe.git
 cd dedupe
+./install.sh
+```
 
-# Make executable
+### Manual Install
+
+```bash
+git clone https://github.com/yksanjo/dedupe.git
+cd dedupe
 chmod +x dedupe
+sudo ln -s $(pwd)/dedupe /usr/local/bin/dedupe
+```
 
-# Optional: Install rich for pretty output
+### Optional Dependencies
+
+```bash
+# For beautiful output (recommended)
 pip install rich
 
-# Optional: Add to PATH
-sudo ln -s $(pwd)/dedupe /usr/local/bin/dedupe
+# For development
+make dev
 ```
 
 ## 📚 Commands

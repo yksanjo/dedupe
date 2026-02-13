@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dedupe"
+version = "1.0.0"
+description = "High-performance file deduplication tool with incremental scanning"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "yksanjo"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Filesystems",
+    "Topic :: Utilities",
+]
+keywords = ["deduplication", "filesystem", "cli", "hash", "duplicate-files"]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+rich = ["rich>=13.0.0"]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "rich>=13.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yksanjo/dedupe"
+Repository = "https://github.com/yksanjo/dedupe"
+Issues = "https://github.com/yksanjo/dedupe/issues"
+
+[tool.setuptools]
+py-modules = ["dedupe"]
+script-files = ["dedupe"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: marks tests as integration tests (slow)",
+]
+
+[tool.mypy]
+python_version = "3.8"
+ignore_missing_imports = true
+strict = false
+warn_return_any = true
+warn_unused_ignores = true
